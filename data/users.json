@@ -1,0 +1,44 @@
+[
+  {
+    "id": "user-001",
+    "name": "Sarah Ahmed",
+    "email": "sarah@example.com",
+    "password": "password123",
+    "phone": "+92-300-1234567",
+    "role": "EV Owner",
+    "joinDate": "2024-09-10",
+    "vehicles": [
+      {
+        "id": "v-001",
+        "make": "BYD",
+        "model": "Atto 3",
+        "year": "2024",
+        "color": "Cosmos Black",
+        "batteryCapacity": 60,
+        "connectorType": "CCS2",
+        "licensePlate": "LHR-2024-EV",
+        "range": 420,
+        "currentCharge": 72,
+        "isDefault": true
+      }
+    ],
+    "savedStations": [],
+    "totalSessions": 8,
+    "totalKwh": 312,
+    "membershipTier": "Standard"
+  },
+  {
+    "id": "user-002",
+    "name": "Omar Farooq",
+    "email": "omar@example.com",
+    "password": "test1234",
+    "phone": "+92-321-9876543",
+    "role": "EV Owner",
+    "joinDate": "2024-11-01",
+    "vehicles": [],
+    "savedStations": [],
+    "totalSessions": 0,
+    "totalKwh": 0,
+    "membershipTier": "Standard"
+  }
+]
