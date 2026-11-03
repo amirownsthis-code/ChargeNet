@@ -1,0 +1,14 @@
+# Visual Studio / VS Code
+.vs/
+.vscode/
+
+# Build outputs
+bin/
+obj/
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
