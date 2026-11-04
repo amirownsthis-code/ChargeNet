@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeNet // Login</title>
+  <meta name="description" content="Sign in to your ChargeNet account. Real-time EV charging station discovery and intelligent scheduling.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Charge Net Infinity Cable Logo.png">
+  
+  <!-- Auth Stylesheet -->
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+
+  <!-- Top Floating Nav: Return to Home -->
+  <nav class="auth-top-nav">
+    <a href="index.html" class="back-home-btn" aria-label="Return to ChargeNet Homepage">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      <span>Back to Home</span>
+    </a>
+  </nav>
+
+  <!-- Master Auth Card (45% Art / 55% Form) -->
+  <main class="auth-master-card">
+    
+    <!-- Left 45%: EV Station & Car Image Scene -->
+    <div class="auth-visual-pane">
+      <div class="auth-visual-brand">
+        <img src="images/Charge Net Infinity Cable Logo.png" alt="ChargeNet Cable Logo">
+        <span>ChargeNet</span>
+      </div>
+
+      <div class="auth-visual-tagline">
+        <h3>Find. Reserve. Charge.</h3>
+        <p>Intelligent EV Charging Network &amp; Smart Scheduling</p>
+      </div>
+    </div>
+
+    <!-- Right 55%: Focused Login Form -->
+    <div class="auth-form-pane">
+      
+      <!-- Top Bar: Logo & Link to Register -->
+      <div class="form-top-bar">
+        <a href="index.html" class="auth-brand" aria-label="ChargeNet Homepage">
+          <img src="images/Charge Net Infinity Cable Logo.png" alt="ChargeNet Cable Logo" class="auth-brand-logo">
+        </a>
+        <div class="auth-switch-text">
+          No account? <a href="register.html" class="auth-switch-link">Create one &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="auth-header">
+        <h1 class="auth-title">Welcome <span class="highlight-orange">Back</span></h1>
+        <p class="auth-subtitle">Login to your ChargeNet account</p>
+      </div>
+
+      <!-- Form -->
+      <form onsubmit="handleLoginSubmit(event)" class="auth-form-container">
+        
+        <!-- Input 1: Email or Username -->
+        <div class="input-group-auth">
+          <input type="text" 
+                 id="loginIdentifier" 
+                 class="input-field-auth" 
+                 placeholder="Email or Username" 
+                 required 
+                 autocomplete="username">
+          <span class="input-icon-auth">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </span>
+        </div>
+
+        <!-- Input 2: Password -->
+        <div class="input-group-auth">
+          <input type="password" 
+                 id="loginPassword" 
+                 class="input-field-auth" 
+                 placeholder="Password" 
+                 required 
+                 autocomplete="current-password">
+          <span class="input-icon-auth">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </span>
+          <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('loginPassword', this)" aria-label="Toggle password visibility">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+
+        <!-- Options: Remember Me & Forgot Password -->
+        <div class="form-options-row">
+          <label class="custom-checkbox-wrap">
+            <input type="checkbox" id="rememberMe" checked>
+            <span>Remember me</span>
+          </label>
+          <a href="forgot-password.html" class="forgot-pw-link">Forgot password?</a>
+        </div>
+
+        <!-- Orange Gradient CTA Button -->
+        <button type="submit" class="btn-auth-submit">
+          <span>Login</span>
+          <span>&rarr;</span>
+        </button>
+
+        <!-- Social Divider -->
+        <div class="social-auth-divider">
+          <span>Or continue with</span>
+        </div>
+
+        <!-- Social Buttons (Google & Apple) -->
+        <div class="social-auth-row">
+          <!-- Google -->
+          <button type="button" class="btn-social" onclick="handleSocialAuth('Google')" aria-label="Sign in with Google">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.36 7.33 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.15 0 9.99 0 12s.45 3.85 1.24 5.42l4.04-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+          </button>
+
+          <!-- Apple -->
+          <button type="button" class="btn-social" onclick="handleSocialAuth('Apple')" aria-label="Sign in with Apple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.77 1.06-1.84.94-2.91-.91.04-2.02.61-2.67 1.38-.57.66-.99 1.74-.86 2.78 1.02.08 2.06-.52 2.59-1.25z"/>
+            </svg>
+          </button>
+
+          <!-- GitHub -->
+          <button type="button" class="btn-social" onclick="handleSocialAuth('GitHub')" aria-label="Sign in with GitHub">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#24292E">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <script>
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+        `;
+      } else {
+        input.type = 'password';
+        btn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        `;
+      }
+    }
+
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('loginIdentifier').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      const btn = e.target.querySelector('button[type=submit]');
+      const originalText = btn.innerHTML;
+
+      btn.innerHTML = '<span>Authenticating...</span>';
+      btn.disabled = true;
+
+      try {
+        // Load users from JSON database
+        const resp = await fetch('data/users.json');
+        if (!resp.ok) throw new Error('Could not load user database');
+        let users = JSON.parse(localStorage.getItem('cn_users_db'));
+
+        // If localStorage has no DB yet, seed from JSON
+        if (!users) {
+          users = await resp.json();
+          localStorage.setItem('cn_users_db', JSON.stringify(users));
+        }
+
+        // Find matching user (by email or name)
+        const matched = users.find(u =>
+          (u.email.toLowerCase() === identifier || u.name.toLowerCase() === identifier)
+          && u.password === password
+        );
+
+        if (!matched) {
+          showLoginError('Invalid email or password. Please try again.');
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          return;
+        }
+
+        // Store active session (never store password in session)
+        const session = { ...matched };
+        delete session.password;
+        localStorage.setItem('cn_session', JSON.stringify(session));
+        sessionStorage.setItem('cn_session', JSON.stringify(session));
+        sessionStorage.setItem('cn_user_id', matched.id);
+
+        window.location.href = 'dashboard.html';
+
+      } catch (err) {
+        // Fallback: try JSON file directly
+        try {
+          const resp2 = await fetch('data/users.json');
+          const users = await resp2.json();
+          localStorage.setItem('cn_users_db', JSON.stringify(users));
+          const identifier2 = document.getElementById('loginIdentifier').value.trim().toLowerCase();
+          const pw2 = document.getElementById('loginPassword').value;
+          const matched2 = users.find(u =>
+            (u.email.toLowerCase() === identifier2 || u.name.toLowerCase() === identifier2) && u.password === pw2
+          );
+          if (matched2) {
+            const session2 = { ...matched2 };
+            delete session2.password;
+            localStorage.setItem('cn_session', JSON.stringify(session2));
+            sessionStorage.setItem('cn_session', JSON.stringify(session2));
+            window.location.href = 'dashboard.html';
+            return;
+          }
+        } catch(_) {}
+        showLoginError('Connection error. Please try again.');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    }
+
+    function showLoginError(msg) {
+      let err = document.getElementById('loginError');
+      if (!err) {
+        err = document.createElement('div');
+        err.id = 'loginError';
+        err.style.cssText = 'background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;font-size:0.83rem;font-weight:600;padding:0.65rem 0.9rem;border-radius:8px;margin-bottom:0.75rem;';
+        const form = document.querySelector('.auth-form-container');
+        form.insertBefore(err, form.firstChild);
+      }
+      err.textContent = msg;
+    }
+
+    function handleSocialAuth(provider) {
+      // Demo: log in as first user for social auth
+      fetch('data/users.json').then(r => r.json()).then(users => {
+        if (users && users.length > 0) {
+          const session = { ...users[0] };
+          delete session.password;
+          sessionStorage.setItem('cn_session', JSON.stringify(session));
+        }
+        window.location.href = 'dashboard.html';
+      }).catch(() => window.location.href = 'dashboard.html');
+    }
+  </script>
+
+</body>
+</html>
