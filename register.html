@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeNet // Create Account</title>
+  <meta name="description" content="Create your ChargeNet account. Real-time EV charging station discovery, Dijkstra route planning, and intelligent scheduling.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Charge Net Infinity Cable Logo.png">
+  
+  <!-- Auth Stylesheet -->
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+
+  <!-- Top Floating Nav: Return to Home -->
+  <nav class="auth-top-nav">
+    <a href="index.html" class="back-home-btn" aria-label="Return to ChargeNet Homepage">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      <span>Back to Home</span>
+    </a>
+  </nav>
+
+  <!-- Master Auth Card (45% Art / 55% Form) -->
+  <main class="auth-master-card">
+    
+    <!-- Left 45%: EV Station & Car Image Scene -->
+    <div class="auth-visual-pane">
+      <div class="auth-visual-brand">
+        <img src="images/Charge Net Infinity Cable Logo.png" alt="ChargeNet Cable Logo">
+        <span>ChargeNet</span>
+      </div>
+
+      <div class="auth-visual-tagline">
+        <h3>Find. Reserve. Charge.</h3>
+        <p>Intelligent EV Charging Network &amp; Smart Scheduling</p>
+      </div>
+    </div>
+
+    <!-- Right 55%: Focused Register Form -->
+    <div class="auth-form-pane">
+      
+      <!-- Top Bar: Logo & Link to Login -->
+      <div class="form-top-bar">
+        <a href="index.html" class="auth-brand" aria-label="ChargeNet Homepage">
+          <img src="images/Charge Net Infinity Cable Logo.png" alt="ChargeNet Cable Logo" class="auth-brand-logo">
+        </a>
+        <div class="auth-switch-text">
+          Already have an account? <a href="login.html" class="auth-switch-link">Login &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="auth-header">
+        <h1 class="auth-title">Create your <span class="highlight-orange">ChargeNet Account</span></h1>
+        <p class="auth-subtitle">Join ChargeNet and get started with smarter EV charging.</p>
+      </div>
+
+      <!-- Form -->
+      <form onsubmit="handleRegisterSubmit(event)" class="auth-form-container">
+        
+        <!-- Input 1: Full Name -->
+        <div class="input-group-auth">
+          <input type="text" 
+                 id="registerName" 
+                 class="input-field-auth" 
+                 placeholder="Full Name" 
+                 required 
+                 autocomplete="name">
+          <span class="input-icon-auth">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </span>
+        </div>
+
+        <!-- Input 2: Email Address -->
+        <div class="input-group-auth">
+          <input type="email" 
+                 id="registerEmail" 
+                 class="input-field-auth" 
+                 placeholder="Email Address" 
+                 required 
+                 autocomplete="email">
+          <span class="input-icon-auth">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </span>
+        </div>
+
+        <!-- Input 3: Password -->
+        <div class="input-group-auth">
+          <input type="password" 
+                 id="registerPassword" 
+                 class="input-field-auth" 
+                 placeholder="Password" 
+                 required 
+                 autocomplete="new-password">
+          <span class="input-icon-auth">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </span>
+          <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('registerPassword', this)" aria-label="Toggle password visibility">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+
+        <!-- Input 4: Confirm Password -->
+        <div class="input-group-auth">
+          <input type="password" 
+                 id="registerConfirmPassword" 
+                 class="input-field-auth" 
+                 placeholder="Confirm Password" 
+                 required 
+                 autocomplete="new-password">
+          <span class="input-icon-auth">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </span>
+          <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('registerConfirmPassword', this)" aria-label="Toggle password visibility">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+
+        <!-- Terms of Service Checkbox -->
+        <div class="terms-row">
+          <label class="custom-checkbox-wrap" style="align-items: flex-start;">
+            <input type="checkbox" id="agreeTerms" required style="margin-top: 3px;">
+            <span>I agree to the <a href="javascript:void(0)" onclick="alert('ChargeNet Terms of Service: By creating an account, you agree to fair use of simulated slot reservations and smart grid balance compliance.')">Terms of Service</a> and <a href="javascript:void(0)" onclick="alert('ChargeNet Privacy Policy: We keep your vehicle profile and battery telemetry encrypted.')">Privacy Policy</a></span>
+          </label>
+        </div>
+
+        <!-- Orange Gradient CTA Button -->
+        <button type="submit" class="btn-auth-submit">
+          <span>Create Account</span>
+          <span>&rarr;</span>
+        </button>
+
+        <!-- Social Divider -->
+        <div class="social-auth-divider">
+          <span>Or continue with</span>
+        </div>
+
+        <!-- Social Buttons (Google & Apple) -->
+        <div class="social-auth-row">
+          <button type="button" class="btn-social" onclick="handleSocialAuth('Google')" aria-label="Register with Google">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.36 7.33 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.15 0 9.99 0 12s.45 3.85 1.24 5.42l4.04-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+          </button>
+
+          <button type="button" class="btn-social" onclick="handleSocialAuth('Apple')" aria-label="Register with Apple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.77 1.06-1.84.94-2.91-.91.04-2.02.61-2.67 1.38-.57.66-.99 1.74-.86 2.78 1.02.08 2.06-.52 2.59-1.25z"/>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <script>
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+        `;
+      } else {
+        input.type = 'password';
+        btn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        `;
+      }
+    }
+
+    async function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+      const p1 = document.getElementById('registerPassword').value;
+      const p2 = document.getElementById('registerConfirmPassword').value;
+      const btn = e.target.querySelector('button[type=submit]');
+      const originalText = btn.innerHTML;
+
+      if (p1 !== p2) {
+        showRegisterError('Passwords do not match. Please verify both password fields.');
+        return;
+      }
+
+      if (p1.length < 6) {
+        showRegisterError('Password must be at least 6 characters long.');
+        return;
+      }
+
+      btn.innerHTML = '<span>Creating Account...</span>';
+      btn.disabled = true;
+
+      try {
+        let users = JSON.parse(localStorage.getItem('cn_users_db'));
+        if (!users) {
+          try {
+            const resp = await fetch('data/users.json');
+            users = await resp.json();
+          } catch (_) {
+            users = [];
+          }
+        }
+
+        // Check if email already exists
+        const exists = users.some(u => u.email.toLowerCase() === email);
+        if (exists) {
+          showRegisterError('An account with this email address already exists. Please login instead.');
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          return;
+        }
+
+        const newUser = {
+          id: 'user-' + Date.now(),
+          name: name,
+          email: email,
+          password: p1,
+          phone: '',
+          city: 'Lahore',
+          role: 'EV Owner',
+          joinDate: new Date().toISOString().split('T')[0],
+          vehicles: [],
+          savedStations: [],
+          totalSessions: 0,
+          totalKwh: 0,
+          membershipTier: 'Standard'
+        };
+
+        users.push(newUser);
+        localStorage.setItem('cn_users_db', JSON.stringify(users));
+
+        // Save session
+        const sessionUser = { ...newUser };
+        delete sessionUser.password;
+        localStorage.setItem('cn_session', JSON.stringify(sessionUser));
+        sessionStorage.setItem('cn_session', JSON.stringify(sessionUser));
+        sessionStorage.setItem('cn_user_id', newUser.id);
+
+        window.location.href = 'dashboard.html';
+      } catch (err) {
+        showRegisterError('Registration failed: ' + err.message);
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    }
+
+    function showRegisterError(msg) {
+      let err = document.getElementById('registerError');
+      if (!err) {
+        err = document.createElement('div');
+        err.id = 'registerError';
+        err.style.cssText = 'background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;font-size:0.83rem;font-weight:600;padding:0.65rem 0.9rem;border-radius:8px;margin-bottom:0.75rem;';
+        const form = document.querySelector('.auth-form-container');
+        form.insertBefore(err, form.firstChild);
+      }
+      err.textContent = msg;
+    }
+
+    function handleSocialAuth(provider) {
+      // Create or log into social session
+      const socialUser = {
+        id: 'user-social-' + Date.now(),
+        name: 'Guest ' + provider + ' User',
+        email: 'user@' + provider.toLowerCase() + '.com',
+        role: 'EV Owner',
+        joinDate: new Date().toISOString().split('T')[0],
+        vehicles: [],
+        savedStations: [],
+        totalSessions: 0,
+        totalKwh: 0,
+        membershipTier: 'Standard'
+      };
+      localStorage.setItem('cn_session', JSON.stringify(socialUser));
+      sessionStorage.setItem('cn_session', JSON.stringify(socialUser));
+      window.location.href = 'dashboard.html';
+    }
+  </script>
+
+</body>
+</html>
