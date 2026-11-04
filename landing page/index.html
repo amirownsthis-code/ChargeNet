@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeNet // Intelligent EV Charging Network Management &amp; Smart Scheduling</title>
+  <meta name="description" content="ChargeNet: Next-generation EV charging network portal. Real-time station discovery, Dijkstra shortest-path routing, deadline-aware smart scheduling, and grid capacity protection.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Charge Net Infinity Cable Logo.png">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="architectural-grid-bg">
+
+  <!-- ===================================================================
+       FIXED FLOATING FROSTED NAVBAR (Pinned on Scroll, Border-Free Logo)
+       =================================================================== -->
+  <header class="navbar-wrapper">
+    <nav class="floating-navbar">
+      
+      <!-- Left: Logo (Zero border, fully transparent, logo only) -->
+      <a href="#home" class="nav-brand" aria-label="ChargeNet Home">
+        <img src="images/Charge Net Infinity Cable Logo.png" alt="ChargeNet Cable Logo" class="nav-brand-img">
+      </a>
+
+      <!-- Center: Navigation Links -->
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#stations" class="nav-link">Find Stations</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">For Station Owners</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+
+      <!-- Right: Action Buttons -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn-nav-box" style="text-decoration: none; display: inline-flex; align-items: center;">Login</a>
+        <a href="register.html" class="btn-nav-dark" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <span>Get Started</span>
+          <span style="font-size: 1rem; line-height: 1;">&rarr;</span>
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- ===================================================================
+       SECTION 1: HERO VIEWPORT (Full Bleed Section, No Enclosing Card Box)
+       =================================================================== -->
+  <section class="section-hero" id="home">
+    <div class="container hero-grid">
+      
+      <!-- Left Column: Typography, Value Proposition & Explore Stations Button -->
+      <div class="hero-left">
+        <div class="category-eyebrow">Intelligent EV Charging Network Portal</div>
+        
+        <h1 class="hero-title">
+          Charge Smarter.<br>
+          <span class="highlight-orange">Drive Farther.</span>
+        </h1>
+
+        <p class="hero-desc">
+          ChargeNet is an integrated EV charging network portal that connects drivers to charging stations across municipal zones. Check real-time port availability, navigate via Dijkstra shortest-path routing, and schedule charging sessions that protect local substation capacity.
+        </p>
+
+        <!-- Signature AeroVA Explore Stations Split Button & Secondary Action -->
+        <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+          <a href="#stations" class="explore-btn-group">
+            <button class="explore-btn-main" type="button">Explore Stations</button>
+            <span class="explore-btn-arrow">&rarr;</span>
+          </a>
+          <button type="button" class="btn-nav-box" style="padding: 0.95rem 1.6rem; font-size: 0.95rem;" onclick="triggerNearestStation()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            Find Nearest Station
+          </button>
+        </div>
+
+        <!-- Trust Checkmarks Strip -->
+        <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.88rem; color: var(--text-secondary); font-weight: 500;">
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Real-Time Ports
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Dijkstra Shortest Route
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Deadline Queueing
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Grid Protected
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Column: Centerpiece Transparent EV Visual + Frosted Glass Callouts -->
+      <div class="hero-right-stage">
+        
+        <!-- Faint Architectural Watermark -->
+        <div class="hero-watermark">CHARGENET</div>
+
+        <!-- Glass Callout 1 (Top Left) -->
+        <div class="hero-callout-card top">
+          <div class="title">Intelligent Scheduler</div>
+          <div class="sub">Deadline &amp; Capacity Aware</div>
+        </div>
+
+        <!-- Centerpiece Transparent EV Charging Cutout with Smooth Floating Animation -->
+        <img src="images/ev_charging_homepage_transparent.png"
+             alt="Autonomous EV Charging Hardware System"
+             class="hero-centerpiece-img">
+
+        <!-- Glass Callout 2 (Bottom Right) -->
+        <div class="hero-callout-card right">
+          <div class="stat">Grid Transformer Safe</div>
+          <div class="sub">Zero Breaker Overload Trips</div>
+        </div>
+
+        <!-- Hardware Pointer Badge (Bottom Left) -->
+        <div class="hero-pointer-tag">
+          <span class="live-pulse"></span>
+          <span>Live Station Telemetry &bull; Real-Time Port States</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 2: FIND CHARGING STATIONS NEARBY (Search & Live Directory)
+       =================================================================== -->
+  <section class="page-section" id="stations" style="background: #F1F4F8;">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll">
+        <div class="category-eyebrow">Search &amp; Station Directory</div>
+        <h2 class="section-title">Find Charging Stations Nearby</h2>
+        <p class="section-desc">
+          Search across municipal zones and transit corridors. Check real-time port availability, compare charging speeds, and calculate the shortest route with Dijkstra graph optimization.
+        </p>
+      </div>
+
+      <!-- Interactive Search Bar & Filter Controls -->
+      <div class="finder-search-bar-wrap reveal-on-scroll">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" style="margin-left: 0.5rem; flex-shrink: 0;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" 
+               id="stationSearchInput" 
+               class="finder-search-input" 
+               placeholder="Search by city, neighborhood, or station name (e.g. Downtown, Tech Park, Expressway)..."
+               oninput="filterStations()">
+        <div class="finder-tabs-row">
+          <button type="button" class="finder-tab-btn active" onclick="setStationFilter('all', this)">All Stations (12)</button>
+          <button type="button" class="finder-tab-btn" onclick="setStationFilter('dc', this)">DC Fast (150+ kW)</button>
+          <button type="button" class="finder-tab-btn" onclick="setStationFilter('ac', this)">AC Level 2 (22 kW)</button>
+          <button type="button" class="finder-tab-btn" onclick="setStationFilter('available', this)">Available Now</button>
+        </div>
+      </div>
+
+      <!-- Interactive Dijkstra Route Calculation Notification Banner -->
+      <div id="routeAlert" class="route-calc-alert">
+        <div class="route-calc-info">
+          <div class="route-calc-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          </div>
+          <div>
+            <div class="route-calc-title" id="routeAlertTitle">Shortest Route Calculated (Dijkstra Algorithm)</div>
+            <div class="route-calc-details" id="routeAlertDetails">Distance: 0.8 km via 4th Ave Arterial &bull; Est. travel time: 4 mins &bull; 4 ports open &bull; Zero waiting queue.</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <button type="button" class="btn-nav-dark" style="padding: 0.6rem 1.1rem; font-size: 0.85rem;" onclick="openReserveModal('Recommended Station')">
+            <span>Reserve Slot</span>
+            <span>&rarr;</span>
+          </button>
+          <button type="button" class="route-calc-close" onclick="closeRouteAlert()" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+
+      <!-- Live Stations Results Grid -->
+      <div class="stations-results-grid" id="stationsGrid">
+        
+        <!-- Station 1: Downtown Central Fast Hub -->
+        <div class="station-result-card reveal-on-scroll reveal-delay-1" data-category="dc available" data-name="downtown central fast hub commercial core alpha">
+          <div class="station-thumb-container">
+            <span class="badge-station-power">180 kW DC FAST</span>
+            <img src="images/yaolaichong_transparent.png" alt="Downtown Central 180kW DC Fast Charging Station">
+            <div class="badge-station-status">
+              <span class="status-dot-active"></span>
+              <span>4/4 Ports Open</span>
+            </div>
+          </div>
+          <div class="station-info-body">
+            <div class="station-zone-label">Commercial Core &bull; Substation Alpha</div>
+            <h3 class="station-title-text">Downtown Central Fast Hub</h3>
+            <div class="station-loc-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Main Boulevard EV Plaza, Dock 04 &bull; 0.8 km</span>
+            </div>
+            <div class="station-specs-grid">
+              <div class="spec-item">
+                <div class="k">Connectors</div>
+                <div class="v">Dual CCS2</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Voltage</div>
+                <div class="v">200V &ndash; 1000V DC</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Capacity Cap</div>
+                <div class="v">180 kW Max</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Dijkstra Node</div>
+                <div class="v" style="color: var(--accent-orange); font-weight:700;">Node #1 (Fastest)</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.65rem; margin-top: auto;">
+              <button type="button" class="btn-get-route" style="flex: 1;" onclick="calculateDijkstraRoute('Downtown Central Fast Hub', '0.8 km', '4 mins', '4/4 Ports Open', 'Main Blvd Corridor')">
+                <span>Get Shortest Route</span>
+                <span>&rarr;</span>
+              </button>
+              <button type="button" class="btn-nav-box" style="padding: 0.75rem 1rem; font-size: 0.85rem;" onclick="openReserveModal('Downtown Central Fast Hub')">
+                Reserve
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Station 2: Tech Corridor Charging Depot -->
+        <div class="station-result-card reveal-on-scroll reveal-delay-2" data-category="ac available" data-name="tech corridor charging depot business park gamma">
+          <div class="station-thumb-container">
+            <span class="badge-station-power">22 kW AC LEVEL 2</span>
+            <img src="images/mora_q8_transparent.png" alt="Tech Corridor 22kW AC Commercial Charging Station">
+            <div class="badge-station-status">
+              <span class="status-dot-active"></span>
+              <span>2/2 Ports Open</span>
+            </div>
+          </div>
+          <div class="station-info-body">
+            <div class="station-zone-label">Business &amp; Tech Park &bull; Substation Gamma</div>
+            <h3 class="station-title-text">Tech Corridor Charging Depot</h3>
+            <div class="station-loc-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>North Innovation Way, Lot C &bull; 1.9 km</span>
+            </div>
+            <div class="station-specs-grid">
+              <div class="spec-item">
+                <div class="k">Connectors</div>
+                <div class="v">Type 2 (32A)</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Voltage</div>
+                <div class="v">400V 3-Phase AC</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Capacity Cap</div>
+                <div class="v">22 kW Max</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Dijkstra Node</div>
+                <div class="v" style="color: var(--accent-orange); font-weight:700;">Node #4</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.65rem; margin-top: auto;">
+              <button type="button" class="btn-get-route" style="flex: 1;" onclick="calculateDijkstraRoute('Tech Corridor Charging Depot', '1.9 km', '7 mins', '2/2 Ports Open', 'Innovation Expressway')">
+                <span>Get Shortest Route</span>
+                <span>&rarr;</span>
+              </button>
+              <button type="button" class="btn-nav-box" style="padding: 0.75rem 1rem; font-size: 0.85rem;" onclick="openReserveModal('Tech Corridor Charging Depot')">
+                Reserve
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Station 3: Interstate Express Service Plaza -->
+        <div class="station-result-card reveal-on-scroll reveal-delay-3" data-category="dc available" data-name="interstate express service plaza highway transit beta">
+          <div class="station-thumb-container">
+            <span class="badge-station-power">160 kW DC FAST</span>
+            <img src="images/yaolaichong_transparent.png" alt="Interstate 160kW DC Fast Charging Station">
+            <div class="badge-station-status">
+              <span class="status-dot-active"></span>
+              <span>3/4 Ports Open</span>
+            </div>
+          </div>
+          <div class="station-info-body">
+            <div class="station-zone-label">Transit Highway &bull; Substation Beta</div>
+            <h3 class="station-title-text">Interstate Express Plaza</h3>
+            <div class="station-loc-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Highway Junction 18, Service Plaza &bull; 3.2 km</span>
+            </div>
+            <div class="station-specs-grid">
+              <div class="spec-item">
+                <div class="k">Connectors</div>
+                <div class="v">CCS2 + CHAdeMO</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Throughput</div>
+                <div class="v">160 kW Continuous</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Grid Protection</div>
+                <div class="v" style="color: var(--accent-mint); font-weight:700;">Active DLB</div>
+              </div>
+              <div class="spec-item">
+                <div class="k">Dijkstra Node</div>
+                <div class="v" style="color: var(--accent-orange); font-weight:700;">Node #7</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.65rem; margin-top: auto;">
+              <button type="button" class="btn-get-route" style="flex: 1;" onclick="calculateDijkstraRoute('Interstate Express Plaza', '3.2 km', '11 mins', '3/4 Ports Open', 'Highway 101 North')">
+                <span>Get Shortest Route</span>
+                <span>&rarr;</span>
+              </button>
+              <button type="button" class="btn-nav-box" style="padding: 0.75rem 1rem; font-size: 0.85rem;" onclick="openReserveModal('Interstate Express Plaza')">
+                Reserve
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 3: HOW IT WORKS (Charge in 4 Simple Steps)
+       =================================================================== -->
+  <section class="page-section" id="how-it-works">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll" style="text-align: center; margin-bottom: 3.5rem;">
+        <div class="category-eyebrow">Seamless Workflow</div>
+        <h2 class="section-title">How ChargeNet Coordinates Your Charging</h2>
+        <p class="section-desc" style="margin: 0.75rem auto 0;">
+          From search to departure, our intelligent algorithms handle navigation, scheduling, and power safety in 4 simple steps.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        
+        <!-- Step 1 -->
+        <div class="step-card reveal-on-scroll reveal-delay-1">
+          <div class="step-num-badge">01</div>
+          <h3 class="step-title">Search &amp; Locate</h3>
+          <p class="step-desc">
+            Search verified stations nearby. Filter by connector type (AC Type 2 / DC Fast) and inspect live port states before you drive.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal-on-scroll reveal-delay-2">
+          <div class="step-num-badge">02</div>
+          <h3 class="step-title">Shortest-Path Route</h3>
+          <p class="step-desc">
+            ChargeNet evaluates your vehicle's location and calculates the shortest, lowest-congestion route to an open socket using Dijkstra's algorithm.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal-on-scroll reveal-delay-3">
+          <div class="step-num-badge">03</div>
+          <h3 class="step-title">Queue with Battery SoC</h3>
+          <p class="step-desc">
+            Submit your current battery percentage and departure deadline. Our intelligent scheduler allocates your charging slot without delays.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card reveal-on-scroll reveal-delay-4">
+          <div class="step-num-badge">04</div>
+          <h3 class="step-title">Charge with Zero Delays</h3>
+          <p class="step-desc">
+            Connect your vehicle with complete confidence. ChargeNet dynamically caps total power to eliminate breaker trips and handles instant fault rerouting.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 4: CORE PLATFORM CAPABILITIES (ChargeNet SRS Features)
+       =================================================================== -->
+  <section class="page-section" id="features" style="background: #F1F4F8;">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll">
+        <div class="category-eyebrow">Platform Capabilities</div>
+        <h2 class="section-title">Engineered for Optimal EV Charging Coordination</h2>
+        <p class="section-desc">
+          ChargeNet integrates data-driven algorithms, machine learning predictions, and real-time station telemetry to solve congestion, eliminate missed deadlines, and prevent transformer capacity overloads.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        
+        <!-- Feature 1: Live Station & Port Discovery -->
+        <div class="feature-card reveal-on-scroll reveal-delay-1">
+          <div class="feature-icon-badge">
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <span class="feature-num">01</span>
+          </div>
+          <h3 class="feature-title">Live Station &amp; Port Discovery</h3>
+          <p class="feature-desc">
+            Maintains continuous visibility over charging stations, individual port statuses (Available, Occupied, Charging, Faulted, Offline), connector types (AC Type 2 / DC Fast CCS), and active kilowatt power utilization.
+          </p>
+        </div>
+
+        <!-- Feature 2: Shortest-Path Graph Routing -->
+        <div class="feature-card reveal-on-scroll reveal-delay-2">
+          <div class="feature-icon-badge">
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path>
+              </svg>
+            </div>
+            <span class="feature-num">02</span>
+          </div>
+          <h3 class="feature-title">Shortest-Path Station Routing</h3>
+          <p class="feature-desc">
+            Represents the charging station network as a weighted graph. Employs Dijkstra's shortest-path algorithm to recommend the nearest available charging station based on driver location, road distance, and remaining battery range.
+          </p>
+        </div>
+
+        <!-- Feature 3: Intelligent Scheduling -->
+        <div class="feature-card reveal-on-scroll reveal-delay-3">
+          <div class="feature-icon-badge">
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <span class="feature-num">03</span>
+          </div>
+          <h3 class="feature-title">Intelligent Smart Scheduling</h3>
+          <p class="feature-desc">
+            Allocates charging slots using constrained optimization and priority queues. Considers current battery percentage, target energy, and departure deadlines so vehicles leave on time without exceeding total station power capacity.
+          </p>
+        </div>
+
+        <!-- Feature 4: Dynamic Load Capping -->
+        <div class="feature-card reveal-on-scroll reveal-delay-4">
+          <div class="feature-icon-badge">
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <span class="feature-num">04</span>
+          </div>
+          <h3 class="feature-title">Transformer Load Capping &amp; DLB</h3>
+          <p class="feature-desc">
+            Enforces strict electrical capacity limits at every station node. Dynamically redistributes active current across simultaneous charging dispensers so local substation transformers are never pushed past safe operating ratings.
+          </p>
+        </div>
+
+        <!-- Feature 5: Automated Fault Rescheduling -->
+        <div class="feature-card reveal-on-scroll reveal-delay-5">
+          <div class="feature-icon-badge">
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <span class="feature-num">05</span>
+          </div>
+          <h3 class="feature-title">Automated Fault Rescheduling</h3>
+          <p class="feature-desc">
+            Real-time anomaly detection identifies station or port failures instantaneously. Affected charging sessions are dynamically rescheduled to alternative operating stations across the network without requiring a system restart.
+          </p>
+        </div>
+
+        <!-- Feature 6: ML Demand Prediction -->
+        <div class="feature-card reveal-on-scroll reveal-delay-6">
+          <div class="feature-icon-badge">
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <span class="feature-num">06</span>
+          </div>
+          <h3 class="feature-title">ML Charging Demand Forecasting</h3>
+          <p class="feature-desc">
+            Machine learning regression models trained on historical charging sessions forecast near-future energy demand and arrival volume for upcoming hours, feeding proactive capacity adjustments directly into the scheduler.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 5: ABOUT CHARGENET (System Architecture & Scope)
+       =================================================================== -->
+  <section class="page-section" id="about">
+    <div class="container">
+      
+      <div class="about-grid">
+        
+        <!-- Left: Formal Enterprise Narrative -->
+        <div class="about-narrative reveal-on-scroll">
+          <div class="category-eyebrow">Platform Scope &amp; Architecture</div>
+          <h2 class="section-title">An Intelligent Software Layer for EV Charging Infrastructure</h2>
+          
+          <p class="about-p">
+            ChargeNet does not manufacture physical charging equipment or own charging stations. Instead, it serves as the essential digital orchestration layer that bridges electric vehicle drivers, independent station owners, and municipal power grids.
+          </p>
+          
+          <p class="about-p">
+            By deploying graph-theoretic Dijkstra shortest-path algorithms, deadline-aware Earliest Deadline First (EDF) queueing, and simulated IoT event streaming, ChargeNet prevents substation transformer trips, reduces driver wait times, and maximizes station revenue without expensive electrical upgrades.
+          </p>
+
+          <p class="about-p">
+            The platform provides clean, role-based workflows: EV drivers discover available chargers and request charging sessions; station operators monitor utilization, manage ports, and update operating schedules; and system administrators maintain system-wide performance and fault resilience.
+          </p>
+        </div>
+
+        <!-- Right: System Benchmark Cards -->
+        <div class="about-metrics-panel">
+          
+          <div class="about-metric-card reveal-on-scroll reveal-delay-1">
+            <div class="about-metric-val">500+</div>
+            <div class="about-metric-label">Simulated EV Load</div>
+            <div class="about-metric-sub">Concurrent vehicle request management</div>
+          </div>
+
+          <div class="about-metric-card reveal-on-scroll reveal-delay-2">
+            <div class="about-metric-val">50+</div>
+            <div class="about-metric-label">Charging Stations</div>
+            <div class="about-metric-sub">Multi-port AC and DC fast network hubs</div>
+          </div>
+
+          <div class="about-metric-card reveal-on-scroll reveal-delay-3">
+            <div class="about-metric-val">100%</div>
+            <div class="about-metric-label">Capacity Compliance</div>
+            <div class="about-metric-sub">Zero transformer capacity limit breaches</div>
+          </div>
+
+          <div class="about-metric-card reveal-on-scroll reveal-delay-4">
+            <div class="about-metric-val">Sub-Sec</div>
+            <div class="about-metric-label">Fault Rescheduling</div>
+            <div class="about-metric-sub">Automatic rerouting without system restart</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 6: STATION OWNER SERVICES (3 Dedicated Question Cards)
+       =================================================================== -->
+  <section class="page-section" id="services" style="background: #F1F4F8;">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll" style="text-align: center; margin-bottom: 3.5rem;">
+        <div class="category-eyebrow">Station Owner &amp; Operator Services</div>
+        <h2 class="section-title">Monetize, Control &amp; Scale Your Charging Stations</h2>
+        <p class="section-desc" style="margin: 0.75rem auto 0;">
+          Whether you manage a standalone fast charger or a multi-port commercial charging depot, ChargeNet provides full-lifecycle onboarding, real-time performance tracking, and grid capacity protection.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        
+        <!-- Service Card 1: Directory Onboarding -->
+        <div class="service-card reveal-on-scroll reveal-delay-1">
+          <div class="service-tag">Directory Onboarding</div>
+          <h3 class="service-question">Own a Charging Station? But Not Listed?</h3>
+          <p class="service-desc">
+            Onboard your physical charging station into the ChargeNet network directory. Gain immediate discoverability to registered EV drivers, display real-time port availability, and accept automated charging requests.
+          </p>
+
+          <ul class="service-features-list">
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Instant inclusion in the network station directory and search</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Publish port counts, power ratings, and connector types (AC / DC)</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Standardized communication via simulated IoT event telemetry</span>
+            </li>
+          </ul>
+
+          <div class="service-footer">
+            <a href="register.html" class="service-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Register Your Station &rarr;</a>
+            <div class="service-req-notice">Requires basic station owner login</div>
+          </div>
+        </div>
+
+        <!-- Service Card 2: Operator Portal -->
+        <div class="service-card reveal-on-scroll reveal-delay-2">
+          <div class="service-tag">Operator Portal</div>
+          <h3 class="service-question">Station Listed, But Not Registered as Owner?</h3>
+          <p class="service-desc">
+            Claim verified operator rights for your listed station. Unlock administrative control to monitor live port utilization, update operating timings, configure maximum capacity limits, and view session history.
+          </p>
+
+          <ul class="service-features-list">
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Verified ownership claiming and operator dashboard access</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Update station operating hours, pricing rates, and port availability</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Real-time station utilization tracking and fault alert notifications</span>
+            </li>
+          </ul>
+
+          <div class="service-footer">
+            <a href="login.html" class="service-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Claim Station Ownership &rarr;</a>
+            <div class="service-req-notice">Requires basic station owner login</div>
+          </div>
+        </div>
+
+        <!-- Service Card 3: Smart Grid Scheduling -->
+        <div class="service-card reveal-on-scroll reveal-delay-3">
+          <div class="service-tag">Smart Grid Scheduling</div>
+          <h3 class="service-question">Need Intelligent Scheduling &amp; Capacity Control?</h3>
+          <p class="service-desc">
+            Protect your station infrastructure from electrical overloads. Enable intelligent Earliest Deadline First (EDF) scheduling that automatically allocates power based on vehicle departure deadlines and substation capacity.
+          </p>
+
+          <ul class="service-features-list">
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automated total station power capping to prevent breaker trips</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Deadline-aware charging queues minimizing driver waiting times</span>
+            </li>
+            <li class="service-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Dynamic rescheduling that automatically isolates faulted ports</span>
+            </li>
+          </ul>
+
+          <div class="service-footer">
+            <a href="login.html" class="service-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Enable Smart Scheduling &rarr;</a>
+            <div class="service-req-notice">Requires operator account access</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 7: FREQUENTLY ASKED QUESTIONS (FAQ Accordion)
+       =================================================================== -->
+  <section class="page-section" id="faq">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll" style="text-align: center; margin-bottom: 3.5rem;">
+        <div class="category-eyebrow">Knowledge &amp; Support</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc" style="margin: 0.75rem auto 0;">
+          Detailed technical and operational insights regarding intelligent scheduling, station management, and fault resilience.
+        </p>
+      </div>
+
+      <div class="faq-accordion-wrap">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item active reveal-on-scroll">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>How does ChargeNet find the nearest charging station for my EV?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-body">
+            <p class="faq-answer-text">
+              ChargeNet models the road network and charging locations as a weighted graph. Using Dijkstra's shortest-path algorithm, the system filters out stations beyond your remaining battery range and calculates the fastest path to an available station factoring road distance, live open ports, and queue delay times.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item reveal-on-scroll">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>Does ChargeNet own physical charging stations or manufacture chargers?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-body">
+            <p class="faq-answer-text">
+              No. ChargeNet is an independent software orchestration and management platform. We connect EV drivers with commercial, depot, and third-party charging stations while empowering station owners with operator dashboards, smart load balancing, and automated scheduling tools.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item reveal-on-scroll">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>How does the intelligent scheduler differ from baseline First-Come, First-Served (FCFS)?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-body">
+            <p class="faq-answer-text">
+              Baseline FCFS serves vehicles strictly in arrival sequence, frequently causing vehicles with urgent departure deadlines to miss their target charges or overloading station transformers during rush periods. ChargeNet's intelligent scheduler uses Earliest Deadline First (EDF) algorithms and constrained optimization to schedule power dynamically based on current battery %, required energy, and departure times without exceeding maximum station capacity.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item reveal-on-scroll">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>How does ChargeNet enforce maximum station power limits to protect electrical transformers?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-body">
+            <p class="faq-answer-text">
+              Every station in ChargeNet has a strictly configured maximum kilowatt capacity. The scheduling engine validates every charging allocation and dynamically recalculates dispenser outputs whenever an EV connects, disconnects, or experiences power fluctuations, guaranteeing that total simultaneous load never exceeds local substation transformer safety thresholds.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item reveal-on-scroll">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>How do station owners register their stations or claim listed ones?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-body">
+            <p class="faq-answer-text">
+              Station owners simply perform a basic login to access the operator portal. From there, owners can click &ldquo;Register Station&rdquo; to add a new station with its location, port count, and power ratings, or click &ldquo;Claim Ownership&rdquo; to gain verified management rights over an existing station profile.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item reveal-on-scroll">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>How does the system handle a sudden charging station or port fault?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer-body">
+            <p class="faq-answer-text">
+              When an anomaly or hardware fault is detected through simulated telemetry, the system flags the port as faulted and immediately triggers the automatic rescheduling module. Affected charging sessions are dynamically reassigned to other available stations or ports across the network without requiring a system restart.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 8: ENTERPRISE CALL TO ACTION BANNER
+       =================================================================== -->
+  <section class="page-section" style="padding-top: 3rem; padding-bottom: 7rem;">
+    <div class="container">
+      
+      <div class="cta-banner-wrap reveal-on-scroll">
+        <div class="cta-banner-content">
+          <h2 class="cta-banner-title">Ready to Experience Intelligent EV Charging Management?</h2>
+          <p class="cta-banner-desc">
+            Explore active charging stations across the network, or register your station to unlock intelligent scheduling and automated capacity protection.
+          </p>
+        </div>
+        <div class="cta-banner-actions">
+          <a href="register.html" class="btn-cta-primary" style="text-decoration: none;">
+            <span>Register Your Station</span>
+            <span>&rarr;</span>
+          </a>
+          <a href="#stations" class="btn-cta-secondary">Explore Stations</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 9: REAL ENTERPRISE FOOTER (Strictly Enterprise & Commercial)
+       =================================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      
+      <div class="footer-top">
+        
+        <!-- Brand & Mission Column -->
+        <div class="footer-brand">
+          <div class="footer-brand-header">
+            <img src="images/Charge Net Infinity Cable Logo.png" alt="ChargeNet Cable Logo" style="height: 34px; width: auto; object-fit: contain;">
+            <span class="footer-brand-title">Charge<span>Net</span></span>
+          </div>
+          <p class="footer-brand-desc">
+            Intelligent EV charging network management and smart charging system. Optimizing charging queues, dynamic power scheduling, and grid resilience.
+          </p>
+        </div>
+
+        <!-- Platform Solutions -->
+        <div>
+          <div class="footer-col-title">Platform</div>
+          <ul class="footer-links">
+            <li><a href="#stations" class="footer-link">Find Nearby Stations</a></li>
+            <li><a href="#features" class="footer-link">Shortest-Path Graph Routing</a></li>
+            <li><a href="#features" class="footer-link">Intelligent Smart Scheduling</a></li>
+            <li><a href="#features" class="footer-link">Dynamic Transformer Capping</a></li>
+            <li><a href="#features" class="footer-link">ML Demand Forecasting</a></li>
+          </ul>
+        </div>
+
+        <!-- Station Owner Solutions -->
+        <div>
+          <div class="footer-col-title">For Operators</div>
+          <ul class="footer-links">
+            <li><a href="register.html" class="footer-link">Register New Station</a></li>
+            <li><a href="login.html" class="footer-link">Claim Station Ownership</a></li>
+            <li><a href="login.html" class="footer-link">Smart Scheduling Dispatch</a></li>
+            <li><a href="login.html" class="footer-link">Station Operator Portal</a></li>
+            <li><a href="#services" class="footer-link">Substation Load Protection</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Legal -->
+        <div>
+          <div class="footer-col-title">System &amp; Resources</div>
+          <ul class="footer-links">
+            <li><a href="#faq" class="footer-link">Frequently Asked Questions</a></li>
+            <li><a href="#about" class="footer-link">System Scope &amp; Architecture</a></li>
+            <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
+            <li><a href="login.html" class="footer-link">Driver Portal Login</a></li>
+            <li><a href="register.html" class="footer-link">Create Driver Account</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div>&copy; 2026 ChargeNet System Inc. All rights reserved. Built for intelligent EV charging and grid reliability.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="javascript:void(0)" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+          <a href="javascript:void(0)" style="color: var(--text-muted); text-decoration: none;">Security Architecture</a>
+          <a href="javascript:void(0)" style="color: var(--text-muted); text-decoration: none;">Status Dashboard</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       COMPACT INTERRUPT MODAL: SIGN IN TO RESERVE CHARGING STATION
+       =================================================================== -->
+  <div class="modal-backdrop" id="reserveModal" onclick="handleBackdropClick(event)">
+    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="max-width: 440px; border-radius: 20px;">
+      
+      <div class="modal-header" style="padding: 1.6rem 1.75rem 0.75rem; border-bottom: none;">
+        <div class="modal-title-group">
+          <div class="modal-eyebrow">Express Reservation</div>
+          <h3 class="modal-title" id="modalTitle" style="font-size: 1.25rem;">Sign in to reserve this charging station</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeReserveModal()" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 0.5rem 1.75rem 1.75rem;">
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.45;">
+          Target Station: <strong id="modalStationTarget" style="color: var(--accent-orange);">Downtown Central Fast Hub</strong>
+        </p>
+
+        <!-- One-Click Google Reservation -->
+        <button type="button" class="btn-social-full" onclick="handleSocialAuth('Google')">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.36 7.33 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.15 0 9.99 0 12s.45 3.85 1.24 5.42l4.04-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <div class="compact-divider"><span>or sign in with email</span></div>
+
+        <form onsubmit="handleReserveLoginSubmit(event)">
+          <div class="form-group" style="margin-bottom: 0.9rem;">
+            <label class="form-label" for="reserveEmail">Email Address</label>
+            <input type="email" id="reserveEmail" class="form-input" placeholder="driver@domain.com" required style="border-radius: 10px;">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label class="form-label" for="reservePassword" style="margin-bottom: 0;">Password</label>
+              <a href="forgot-password.html" style="font-size: 0.78rem; color: var(--accent-orange); text-decoration: none; font-weight: 600;">Forgot?</a>
+            </div>
+            <input type="password" id="reservePassword" class="form-input" placeholder="••••••••" required style="border-radius: 10px;">
+          </div>
+
+          <button type="submit" class="form-submit-btn" style="border-radius: 10px; padding: 0.85rem; font-weight: 700;">
+            Sign In &amp; Reserve Port &rarr;
+          </button>
+        </form>
+
+        <div style="margin-top: 1.25rem; text-align: center; font-size: 0.86rem; color: var(--text-secondary);">
+          Don't have an account? <a href="register.html" style="color: var(--accent-orange); font-weight: 700; text-decoration: none;">Create Account &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       CLIENT-SIDE INTERACTIVITY SCRIPTS
+       =================================================================== -->
+  <script>
+    // FAQ Accordion Toggle
+    function toggleFaq(button) {
+      const item = button.closest('.faq-item');
+      const allItems = document.querySelectorAll('.faq-item');
+      
+      allItems.forEach(i => {
+        if (i !== item) {
+          i.classList.remove('active');
+        }
+      });
+
+      item.classList.toggle('active');
+    }
+
+    // Real-Time Station Search & Filtering
+    function filterStations() {
+      const query = document.getElementById('stationSearchInput').value.toLowerCase().trim();
+      const activeTab = document.querySelector('.finder-tab-btn.active');
+      const currentCategory = activeTab ? activeTab.getAttribute('data-category') || 'all' : 'all';
+      const cards = document.querySelectorAll('.station-result-card');
+
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const category = card.getAttribute('data-category') || '';
+        
+        const matchesQuery = !query || name.includes(query);
+        const matchesCategory = currentCategory === 'all' || category.includes(currentCategory);
+
+        if (matchesQuery && matchesCategory) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Station Category Tabs
+    function setStationFilter(category, btn) {
+      document.querySelectorAll('.finder-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('data-category', category);
+      filterStations();
+    }
+
+    // Dijkstra Route Calculation Trigger
+    function calculateDijkstraRoute(stationName, distance, eta, openPorts, corridor) {
+      const alertBox = document.getElementById('routeAlert');
+      const title = document.getElementById('routeAlertTitle');
+      const details = document.getElementById('routeAlertDetails');
+
+      title.innerHTML = `Shortest Route Calculated (Dijkstra): <span style="color: var(--accent-orange); font-weight: 700;">${stationName}</span>`;
+      details.innerHTML = `Optimal Distance: <strong>${distance}</strong> via ${corridor} &bull; Est. travel time: <strong>${eta}</strong> &bull; <strong>${openPorts}</strong> &bull; Zero waiting queue.`;
+      
+      alertBox.classList.add('active');
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function closeRouteAlert() {
+      const alertBox = document.getElementById('routeAlert');
+      alertBox.classList.remove('active');
+    }
+
+    function triggerNearestStation() {
+      const stationsSection = document.getElementById('stations');
+      stationsSection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        calculateDijkstraRoute('Downtown Central Fast Hub', '0.8 km', '4 mins', '4/4 Ports Open', 'Main Blvd Corridor');
+      }, 500);
+    }
+
+    // Compact Interrupt Modal Operations (Reservation Flow)
+    function openReserveModal(stationName) {
+      const modal = document.getElementById('reserveModal');
+      const targetText = document.getElementById('modalStationTarget');
+      if (targetText && stationName) {
+        targetText.textContent = stationName;
+      }
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReserveModal() {
+      const modal = document.getElementById('reserveModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleBackdropClick(event) {
+      if (event.target === document.getElementById('reserveModal')) {
+        closeReserveModal();
+      }
+    }
+
+    function handleReserveLoginSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('reserveEmail').value;
+      const target = document.getElementById('modalStationTarget').textContent;
+      alert(`Authenticated as ${email}! Charging port reserved at ${target}. Navigating via Dijkstra shortest route.`);
+      closeReserveModal();
+    }
+
+    function handleSocialAuth(provider) {
+      const target = document.getElementById('modalStationTarget').textContent;
+      alert(`Connected via ${provider} OAuth! Reservation locked for ${target}.`);
+      closeReserveModal();
+    }
+
+    // Keyboard support for ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeReserveModal();
+      }
+    });
+
+    // Active Nav Link Spy on Scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id], footer[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      let currentSection = '';
+
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 140;
+        const height = sec.offsetHeight;
+        if (window.scrollY >= top && window.scrollY < top + height) {
+          currentSection = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+
+      // Toggle Back to Top Round Button
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      if (backToTopBtn) {
+        if (window.scrollY > 380) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      }
+    });
+
+    // Smooth Scroll for Navigation and In-Page Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const navOffset = 95;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Scroll to Top Handler
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // IntersectionObserver for Smooth Entrance Animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+      } else {
+        revealElements.forEach(el => el.classList.add('revealed'));
+      }
+    });
+  </script>
+
+  <!-- Floating Back to Top Round Button -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Scroll to top" onclick="scrollToTop()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+</body>
+</html>
